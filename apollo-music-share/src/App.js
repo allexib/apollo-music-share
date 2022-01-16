@@ -3,16 +3,22 @@ import Header from "./components/Header";
 import AddSong from "./components/AddSong";
 import SongList from "./components/SongList";
 import SongPlayer from "./components/SongPlayer";
+import {Grid} from '@mui/material';
 
 
 function App() {
     return (
         <>
             <Header/>
-            <AddSong/>
-            <SongList/>
-            <SongPlayer/>
-
+            <Grid container spacing={3}>
+                <Grid item>
+                    <AddSong/>
+                    <SongList/>
+                </Grid>
+                <Grid item>
+                    <SongPlayer/>
+                </Grid>
+            </Grid>
         </>
     );
 }
