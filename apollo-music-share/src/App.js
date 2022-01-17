@@ -10,12 +10,12 @@ function App() {
     return (
         <>
             <Header/>
-            <Grid container spacing={3}>
-                <Grid item>
+            <Grid  container spacing={3}>
+                <Grid item xs={12} md={7}>
                     <AddSong/>
                     <SongList/>
                 </Grid>
-                <Grid item>
+                <Grid item xs={12} md={5}>
                     <SongPlayer/>
                 </Grid>
             </Grid>
