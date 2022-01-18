@@ -1,8 +1,32 @@
 import React from 'react'
-import {TextField, InputAdornment, Button, Dialog, DialogTitle, DialogContent, DialogActions} from "@mui/material/";
+import {
+    TextField, InputAdornment, Button, Dialog,
+    DialogTitle, DialogContent, DialogActions
+} from "@mui/material/";
+import {makeStyles} from '@mui/styles'
 import {Link, AddBoxOutlined} from "@mui/icons-material/";
 
+const useStyles = makeStyles(theme => ({
+    container: {
+        display: 'flex',
+        alignItems: 'center'
+    },
+    urlInput: {
+        margin: theme.spacing(1)
+    },
+    addSongButton: {
+        margin: theme.spacing(1)
+    },
+    dialog: {
+        textAlign: 'center',
+    },
+    thumbnail: {
+        width: '90%'
+    }
+}))
+
 function AddSong() {
+    const classes=useStyles()
     const [dialog, setDialog] = React.useState(false)
 
     function handleCloseDialog() {
@@ -10,8 +34,9 @@ function AddSong() {
     }
 
     return (
-        <div>
+        <div className={classes.container}>
             <Dialog
+                className={classes.dialog}
                 open={dialog}
                 onClose={handleCloseDialog}
             >
@@ -19,6 +44,7 @@ function AddSong() {
                 <DialogContent>
                     <img src="http://i1.sndcdn.com/artworks-000670470790-ej1gvb-t500x500.jpg"
                          alt='Song thumbnail'
+                         className={classes.thumbnail}
                     />
                     <TextField
                         margin='dense'
@@ -45,22 +71,25 @@ function AddSong() {
                 </DialogActions>
             </Dialog>
             <TextField
+                className={classes.urlInput}
                 placeholder='Add Youtube or Soundcloud Url'
                 fullWidth
                 margin='normal'
                 type='url'
                 InputProps={{
                     startAdornment: (
-                        <InputAdornment>
+                        <InputAdornment position='start'>
                             <Link/>
                         </InputAdornment>
                     )
                 }}
             />
             <Button
+                className={classes.addSongButton}
                 onClick={() => setDialog(true)}
                 variant='contained' color='primary' endIcon={<AddBoxOutlined/>}
             >
+                Add
             </Button>
         </div>
     )
