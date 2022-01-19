@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Card, CardContent, Typography, IconButton, Slider, CardMedia, Avatar, useMediaQuery
+   Typography, IconButton, Avatar, useMediaQuery,Hidden
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import {makeStyles} from '@mui/styles'
@@ -29,7 +29,7 @@ function QueuedSongList() {
 const useStyles = makeStyles({
     avatar: {
         width: 44,
-        height: 144
+        height: 44
     },
     text: {
         textOverflow: 'elipsis',

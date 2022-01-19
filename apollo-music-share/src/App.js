@@ -7,14 +7,15 @@ import SongPlayer from "./components/SongPlayer";
 
 
 function App() {
+    const greaterThanSm = useMediaQuery(theme => theme.breakpoints.up('sm'))
     const greaterThanMd = useMediaQuery(theme => theme.breakpoints.up('md'))
 
     return (
         <>
-            <Header/>
+            {greaterThanSm && <Header/>}
             <Grid container spacing={3}>
                 <Grid style={{
-                    paddingTop: 80
+                    paddingTop: greaterThanSm ? 80 : 10
                 }} item xs={12} md={7}>
                     <AddSong/>
                     <SongList/>
