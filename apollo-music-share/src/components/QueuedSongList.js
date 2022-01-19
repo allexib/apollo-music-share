@@ -3,6 +3,7 @@ import {
     Card, CardContent, Typography, IconButton, Slider, CardMedia, Avatar
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
+import {makeStyles} from '@mui/styles'
 
 function QueuedSongList() {
     const song = {
@@ -23,19 +24,39 @@ function QueuedSongList() {
     )
 }
 
+const useStyles = makeStyles({
+    avatar: {
+        width: 44,
+        height: 144
+    },
+    text: {
+        textOverflow: 'elipsis',
+        overflow: 'hidden'
+    },
+    container: {
+        display: 'grid',
+        gridAutoFlow: 'column',
+        gridTemplateColumns: '50px auto 50px',
+        gridGap: 12,
+        alignItems: 'center',
+        marginTop: 10
+    },
+    songInfoContainer: {
+        overflow: 'hidden',
+        whiteSpace: 'nowrap'
+    }
+})
+
 function QueuedSong({song}) {
+    const classes = useStyles()
     const {thumbnail, artist, title} = song
 
     return (
-        <div>
-            <Avatar src={thumbnail} alt='song thumbnail'/>
-            <div>
-                <Typography variant='subtitle2'>
-                    {title}
-                </Typography>
-                <Typography color='textSecondary' variant='body2'>
-                    {artist}
-                </Typography>
+        <div className={classes.container}>
+            <Avatar src={thumbnail} alt='song thumbnail' className={classes.avatar}/>
+            <div className={classes.songInfoContainer}>
+                <Typography variant='subtitle2' className={classes.text}> {title}</Typography>
+                <Typography color='textSecondary' variant='body2'className={classes.text}>{artist}</Typography>
             </div>
             <IconButton>
                 <DeleteIcon color='error'/>
