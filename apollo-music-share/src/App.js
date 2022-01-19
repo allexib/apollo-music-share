@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, useMediaQuery} from '@mui/material';
+import {Grid, useMediaQuery, Hidden} from '@mui/material';
 import Header from "./components/Header";
 import AddSong from "./components/AddSong";
 import SongList from "./components/SongList";
@@ -12,7 +12,9 @@ function App() {
 
     return (
         <>
-            {greaterThanSm && <Header/>}
+            <Hidden only='xs'>
+                <Header/>
+            </Hidden>
             <Grid container spacing={3}>
                 <Grid style={{
                     paddingTop: greaterThanSm ? 80 : 10
