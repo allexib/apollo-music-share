@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid} from '@mui/material';
+import {Grid, useMediaQuery} from '@mui/material';
 import Header from "./components/Header";
 import AddSong from "./components/AddSong";
 import SongList from "./components/SongList";
@@ -7,6 +7,9 @@ import SongPlayer from "./components/SongPlayer";
 
 
 function App() {
+    const matches = useMediaQuery('(min-width:600px)')
+    console.log(matches)
+
     return (
         <>
             <Header/>
