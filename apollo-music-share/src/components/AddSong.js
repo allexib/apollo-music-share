@@ -5,8 +5,9 @@ import {
 } from "@mui/material/";
 import {makeStyles} from '@mui/styles'
 import {Link, AddBoxOutlined} from "@mui/icons-material/";
+import ReactPlayer from 'react-player'
 import SoundCloudPlayer from 'react-player/lib/players/SoundCloud'
-import YotubePlayer from 'react-player/lib/players/YouTube'
+import YoutubePlayer from 'react-player/lib/players/YouTube'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -32,9 +33,15 @@ function AddSong() {
     const [url, setUrl] = React.useState('')
     const [playable, setPlayable] = React.useState(false)
     const [dialog, setDialog] = React.useState(false)
+    const [song, setSong] = React.useState({
+        duration: 0,
+        title: '',
+        artist: '',
+        thumbnail: ''
+    })
 
     React.useEffect(() => {
-        const isPlayable = SoundCloudPlayer.canPlay(url) || YotubePlayer.canPlay(url)
+        const isPlayable = SoundCloudPlayer.canPlay(url) || YoutubePlayer.canPlay(url)
         setPlayable(isPlayable)
     }, [url])
 
@@ -42,6 +49,46 @@ function AddSong() {
         setDialog(false)
     }
 
+    async function handleEditSong({player}) {
+        const nestedPlayer = player.player.player
+        let songData
+        if (nestedPlayer.getVideoData) {
+            songData = getYoutubeInfo(nestedPlayer)
+        } else if (nestedPlayer.getCurrentSound) {
+            songData = await getSoundcloudInfo(nestedPlayer)
+        }
+        setSong({...songData, url})
+    }
+
+    function getYoutubeInfo(player) {
+        const duration = player.getDuration()
+        const {title, video_id, author} = player.getVideoData()
+        const thumbnail = `http://img.yotube.com/vi/${video_id}/0.jpg`
+        return {
+            duration,
+            title,
+            artist: author,
+            thumbnail
+        }
+    }
+
+    function getSoundcloudInfo(player) {
+        return new Promise(resolve => {
+            player.getCurrentSound(songData => {
+                if (songData) {
+                    resolve({
+                        duration: Number(songData.duration / 1000),
+                        title: songData.title,
+                        artist: songData.user.username,
+                        thumbnail: songData.artwork_url.replace('-large', '-t500x500')
+                    })
+                }
+            })
+        })
+
+    }
+
+    const {thumbnail, title, artist} = song
     return (
         <div className={classes.container}>
             <Dialog
@@ -51,23 +98,26 @@ function AddSong() {
             >
                 <DialogTitle>Edit Song</DialogTitle>
                 <DialogContent>
-                    <img src="http://i1.sndcdn.com/artworks-000670470790-ej1gvb-t500x500.jpg"
+                    <img src={thumbnail}
                          alt='Song thumbnail'
                          className={classes.thumbnail}
                     />
                     <TextField
+                        value={title}
                         margin='dense'
                         name='title'
                         label='Title'
                         fullWidth
                     />
                     <TextField
+                        value={artist}
                         margin='dense'
                         name='artist'
                         label='Artist'
                         fullWidth
                     />
                     <TextField
+                        value={thumbnail}
                         margin='dense'
                         name='thumbnail'
                         label='Thumbnail'
@@ -103,6 +153,7 @@ function AddSong() {
             >
                 Add
             </Button>
+            <ReactPlayer url={url} hidden onReady={handleEditSong}/>
         </div>
     )
 }
