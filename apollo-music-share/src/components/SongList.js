@@ -6,17 +6,19 @@ import {
     Typography, CardActions, IconButton
 } from '@mui/material'
 import {makeStyles} from '@mui/styles';
-
+import {useQuery} from '@apollo/react-hooks'
+import {GET_SONGS} from "../graphql/queries";
 
 
 function SongList() {
-    let loading = false
+    /*let loading = false*/
+    const {data, loading, error} = useQuery(GET_SONGS)
 
-    const song = {
+    /*const song = {
         title: 'lune',
         artist: 'moon',
         thumbnail: 'https://avatars.githubusercontent.com/u/75475838?s=400&u=2b642fc87e14e3e2a1e5f77621a9c081e9c4f551&v=4'
-    }
+    }*/
 
     if (loading) {
         return (
@@ -30,10 +32,15 @@ function SongList() {
             </div>
         )
     }
+    if (error) return <div>error fetching songs</div>
 
-    return <div>{Array.from({length: 10}, () => song).map((song, i) => (
-        <Song key={i} song={song}/>
-    ))}</div>
+    return (
+        <div>
+            {data.songs.map(song => (
+                <Song key={song.id} song={song}/>
+            ))}
+        </div>
+    )
 }
 
 const useStyles = makeStyles(theme => ({
