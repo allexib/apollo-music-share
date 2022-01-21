@@ -63,7 +63,7 @@ function AddSong() {
     function getYoutubeInfo(player) {
         const duration = player.getDuration()
         const {title, video_id, author} = player.getVideoData()
-        const thumbnail = `http://img.yotube.com/vi/${video_id}/0.jpg`
+        const thumbnail = `http://img.youtube.com/vi/${video_id}/0.jpg`
         return {
             duration,
             title,
