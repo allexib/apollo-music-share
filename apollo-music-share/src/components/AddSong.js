@@ -10,7 +10,7 @@ import SoundCloudPlayer from 'react-player/lib/players/SoundCloud'
 import YoutubePlayer from 'react-player/lib/players/YouTube'
 import {ADD_SONG} from "../graphql/mutations";
 import {useMutation} from '@apollo/react-hooks'
-
+/*import {graphQLErrors} from 'graphql'*/
 
 
 const useStyles = makeStyles(theme => ({
@@ -128,7 +128,7 @@ function AddSong() {
     }
 
     const {thumbnail, title, artist} = song
-     console.dir(error)
+     /*console.dir(error)*/
     return (
         <div className={classes.container}>
             <Dialog
