@@ -1,25 +1,24 @@
-import ApolloClient from 'apollo-client'
+/*import ApolloClient from 'apollo-client'
 import {WebSocketLink} from 'apollo-link-ws'
 import {InMemoryCache} from 'apollo-cache-inmemory'
 
 const client = new ApolloClient({
     link: new WebSocketLink({
         uri: 'wss://close-fly-96.hasura.app/v1/graphql',
-        options: {
-            reconnect: true,
-            lazy: true,
-            inactivityTimeout: 30000,
-        },
         headers: {
             'x-hasura-admin-secret': 'aoT13ThzBA7qKPb5dyivNl0BXe4K6xoqY73sqAzn3RlUEIZX59om3lBMaP1RC0N7'
+        },
+        options: {
+            reconnect: true,
+            /!*lazy: true,
+            inactivityTimeout: 30000,*!/
         }
     }),
     cache: new InMemoryCache()
 })
 
-export default client
+export default client*/
 
-/*
 import ApolloClient from 'apollo-boost'
 
 const client = new ApolloClient({
@@ -29,4 +28,4 @@ const client = new ApolloClient({
     }
 })
 
-export default client*/
+export default client

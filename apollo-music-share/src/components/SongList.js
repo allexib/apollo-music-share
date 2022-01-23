@@ -6,13 +6,13 @@ import {
     Typography, CardActions, IconButton
 } from '@mui/material'
 import {makeStyles} from '@mui/styles';
-import {useSubscription} from '@apollo/react-hooks'
-import {GET_SONGS} from "../graphql/subscriptions";
+import {useQuery} from '@apollo/react-hooks'
+import {GET_SONGS} from "../graphql/queries";
 
 
 function SongList() {
     /*let loading = false*/
-    const {data, loading, error} = useSubscription(GET_SONGS)
+    const {data, loading, error} = useQuery(GET_SONGS)
 
     /*const song = {
         title: 'lune',
