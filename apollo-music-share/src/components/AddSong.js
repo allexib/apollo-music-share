@@ -128,7 +128,7 @@ function AddSong() {
     }
 
     const {thumbnail, title, artist} = song
-     /*console.dir(error)*/
+     console.dir(error)
     return (
         <div className={classes.container}>
             <Dialog
