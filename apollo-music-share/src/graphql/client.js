@@ -21,6 +21,8 @@ const client = new ApolloClient({
 
 export default client
 
+/*error graphQLErrors ir is normal, next step fix it*/
+
 /*
 import ApolloClient from 'apollo-boost'
 
