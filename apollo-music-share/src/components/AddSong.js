@@ -124,7 +124,7 @@ function AddSong() {
     }
 
     function handleError(field) {
-        return error?.graphQLErrors[0]?.extension?.path.includes(field)
+        return error?.graphQLErrors[0]?.extensions?.path.includes(field)
     }
 
     const {thumbnail, title, artist} = song
