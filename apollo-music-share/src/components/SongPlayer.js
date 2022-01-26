@@ -6,9 +6,9 @@ import {
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 import {makeStyles} from '@mui/styles'
 import {SongContext} from "../App";
-
 
 
 const useStyles = makeStyles(theme => ({
@@ -40,8 +40,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function SongPlayer() {
-    const {state} = React.useContext(SongContext)
+    const {state, dispatch} = React.useContext(SongContext)
     const classes = useStyles()
+
+    function handleTogglePlay() {
+        dispatch(state.isPlaying?{type:'PAUSE_SONG'}:{type: 'PLAY_SONG'})
+    }
 
     return (
         <>
@@ -59,8 +63,8 @@ function SongPlayer() {
                         <IconButton>
                             <SkipPreviousIcon/>
                         </IconButton>
-                        <IconButton>
-                            <PlayArrowIcon className={classes.playIcon}/>
+                        <IconButton onClick={handleTogglePlay}>
+                            {state.isPlaying ? <PauseIcon className={classes.playIcon}/> : <PlayArrowIcon className={classes.playIcon}/>}
                         </IconButton>
                         <IconButton>
                             <SkipNextIcon/>
