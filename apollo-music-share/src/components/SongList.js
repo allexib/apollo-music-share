@@ -1,6 +1,5 @@
 import React from 'react'
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SaveIcon from '@mui/icons-material/Save';
+import {Pause,Save,PlayArrow} from '@mui/icons-material';
 import {
     CircularProgress, Card, CardMedia, CardContent,
     Typography, CardActions, IconButton
@@ -8,6 +7,7 @@ import {
 import {makeStyles} from '@mui/styles';
 import {useSubscription} from '@apollo/react-hooks'
 import {GET_SONGS} from "../graphql/subscriptions";
+import {SongContext} from "../App";
 
 
 function SongList() {
@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
 
 function Song({song}) {
     const classes = useStyles()
+    const {state} = React.useContext(SongContext)
     const {title, artist, thumbnail} = song
 
     return <Card className={classes.container}>
@@ -81,10 +82,10 @@ function Song({song}) {
                 </CardContent>
                 <CardActions>
                     <IconButton size='small' color='primary'>
-                        <PlayArrowIcon/>
+                        {state.isPlaying ? <Pause/> : <PlayArrow/>}
                     </IconButton>
                     <IconButton size='small' color='secondary'>
-                        <SaveIcon/>
+                        <Save/>
                     </IconButton>
                 </CardActions>
             </div>
