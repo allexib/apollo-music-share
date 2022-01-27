@@ -1,5 +1,5 @@
 import React from 'react'
-import {Pause,Save,PlayArrow} from '@mui/icons-material';
+import {Pause, Save, PlayArrow} from '@mui/icons-material';
 import {
     CircularProgress, Card, CardMedia, CardContent,
     Typography, CardActions, IconButton
@@ -64,9 +64,16 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function Song({song}) {
+    const {id} = song
     const classes = useStyles()
     const {state} = React.useContext(SongContext)
+    const [currentSongPlaying, setCurrentSongPlaying] = React.useState(false)
     const {title, artist, thumbnail} = song
+
+    React.useEffect(() => {
+        const isSongPlaying = state.isPlaying && id === state.song.id
+        setCurrentSongPlaying(isSongPlaying)
+    }, [id, state.song.id, state.isPlaying])
 
     return <Card className={classes.container}>
         <div className={classes.songInfoContainer}>
@@ -82,7 +89,7 @@ function Song({song}) {
                 </CardContent>
                 <CardActions>
                     <IconButton size='small' color='primary'>
-                        {state.isPlaying ? <Pause/> : <PlayArrow/>}
+                        {currentSongPlaying ? <Pause/> : <PlayArrow/>}
                     </IconButton>
                     <IconButton size='small' color='secondary'>
                         <Save/>
