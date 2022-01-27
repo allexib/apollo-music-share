@@ -12,7 +12,7 @@ function songReducer(state, action) {
                 isPlaying: false
             }
         }
-        case'SET_SONG': {
+        case 'SET_SONG': {
             return {
                 ...state,
                 song: action.payload.song

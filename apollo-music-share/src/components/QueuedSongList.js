@@ -1,11 +1,12 @@
 import React from 'react'
 import {
-   Typography, IconButton, Avatar, useMediaQuery
+    Typography, IconButton, Avatar, useMediaQuery
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import {makeStyles} from '@mui/styles'
 
-function QueuedSongList() {
+function QueuedSongList({queue}) {
+    console.log({queue})
     const greaterThanMd = useMediaQuery(theme => theme.breakpoints.up('md'))
 
     const song = {

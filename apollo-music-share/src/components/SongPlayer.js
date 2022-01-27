@@ -9,6 +9,8 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import {makeStyles} from '@mui/styles'
 import {SongContext} from "../App";
+import {GET_QUEUED_SONGS} from "../graphql/queries";
+import {useQuery} from '@apollo/react-hooks'
 
 
 const useStyles = makeStyles(theme => ({
@@ -40,11 +42,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function SongPlayer() {
+    const {data} = useQuery(GET_QUEUED_SONGS)
     const {state, dispatch} = React.useContext(SongContext)
     const classes = useStyles()
 
     function handleTogglePlay() {
-        dispatch(state.isPlaying?{type:'PAUSE_SONG'}:{type: 'PLAY_SONG'})
+        dispatch(state.isPlaying ? {type: 'PAUSE_SONG'} : {type: 'PLAY_SONG'})
     }
 
     return (
@@ -64,7 +67,8 @@ function SongPlayer() {
                             <SkipPreviousIcon/>
                         </IconButton>
                         <IconButton onClick={handleTogglePlay}>
-                            {state.isPlaying ? <PauseIcon className={classes.playIcon}/> : <PlayArrowIcon className={classes.playIcon}/>}
+                            {state.isPlaying ? <PauseIcon className={classes.playIcon}/> :
+                                <PlayArrowIcon className={classes.playIcon}/>}
                         </IconButton>
                         <IconButton>
                             <SkipNextIcon/>
@@ -82,7 +86,7 @@ function SongPlayer() {
                 </div>
                 <CardMedia className={classes.thumbnail} image={state.song.thumbnail}/>
             </Card>
-            <QueuedSongList/>
+            <QueuedSongList queue={data.queue}/>
         </>
     )
 }
