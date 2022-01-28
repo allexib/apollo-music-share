@@ -11,7 +11,7 @@ import {makeStyles} from '@mui/styles'
 import {SongContext} from "../App";
 import {GET_QUEUED_SONGS} from "../graphql/queries";
 import {useQuery} from '@apollo/react-hooks'
-
+import ReactPlayer from 'react-player'
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -84,6 +84,7 @@ function SongPlayer() {
                         step={0.01}
                     />
                 </div>
+                <ReactPlayer url={state.song.url} playing={state.isPlaying} hidden/>
                 <CardMedia className={classes.thumbnail} image={state.song.thumbnail}/>
             </Card>
             <QueuedSongList queue={data.queue}/>
