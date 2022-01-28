@@ -9,19 +9,19 @@ function QueuedSongList({queue}) {
     console.log({queue})
     const greaterThanMd = useMediaQuery(theme => theme.breakpoints.up('md'))
 
-    const song = {
+  /*  const song = {
         title: 'lune',
         artist: 'moon',
         thumbnail: 'https://avatars.githubusercontent.com/u/75475838?s=400&u=' +
         '2b642fc87e14e3e2a1e5f77621a9c081e9c4f551&v=4'
-    }
+    }*/
 
     return greaterThanMd && (
         <div style={{margin: '10px 0'}}>
             <Typography color='textSecondary' variant='button'>
-                QUEUE (5)
+                QUEUE ({queue.length})
             </Typography>
-            {Array.from({length: 5}, () => song).map((song, i) => (
+            {queue.map((song, i) => (
                 <QueuedSong key={i} song={song}/>
             ))}
         </div>
