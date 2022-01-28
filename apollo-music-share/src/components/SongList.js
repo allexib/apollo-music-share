@@ -9,7 +9,7 @@ import {useSubscription} from '@apollo/react-hooks'
 import {GET_SONGS} from "../graphql/subscriptions";
 import {SongContext} from "../App";
 import {useMutation} from '@apollo/react-hooks'
-import {ADD_OR_REMOVE_QUEUE} from "../graphql/mutations";
+import {ADD_OR_REMOVE_FROM_QUEUE} from "../graphql/mutations";
 
 
 function SongList() {
@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
 function Song({song}) {
     const {id} = song
     const classes = useStyles()
-    const [addOrRemoveFromQueue] = useMutation(ADD_OR_REMOVE_QUEUE)
+    const [addOrRemoveFromQueue] = useMutation(ADD_OR_REMOVE_FROM_QUEUE)
     const {state, dispatch} = React.useContext(SongContext)
     const [currentSongPlaying, setCurrentSongPlaying] = React.useState(false)
     const {title, artist, thumbnail} = song

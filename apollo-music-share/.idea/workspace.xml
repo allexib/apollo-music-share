@@ -57,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/graphql/mutations.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
-              <caret line="2" column="32" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="32" />
+              <caret line="2" column="37" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -65,8 +65,8 @@
       <file leaf-file-name="QueuedSongList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/QueuedSongList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+            <state relative-caret-position="315">
+              <caret line="60" column="43" lean-forward="true" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -77,8 +77,8 @@
       <file leaf-file-name="SongList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/SongList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="70" column="54" lean-forward="true" selection-start-line="70" selection-start-column="54" selection-end-line="70" selection-end-column="54" />
+            <state relative-caret-position="1470">
+              <caret line="70" column="71" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -153,9 +153,9 @@
         <option value="$PROJECT_DIR$/src/graphql/subscriptions.js" />
         <option value="$PROJECT_DIR$/src/graphql/queries.js" />
         <option value="$PROJECT_DIR$/src/components/SongPlayer.js" />
+        <option value="$PROJECT_DIR$/src/graphql/client.js" />
         <option value="$PROJECT_DIR$/src/graphql/mutations.js" />
         <option value="$PROJECT_DIR$/src/components/SongList.js" />
-        <option value="$PROJECT_DIR$/src/graphql/client.js" />
         <option value="$PROJECT_DIR$/src/components/QueuedSongList.js" />
       </list>
     </option>
@@ -265,12 +265,12 @@
       <workItem from="1642934527172" duration="225000" />
       <workItem from="1643266294271" duration="11696000" />
       <workItem from="1643292025516" duration="1191000" />
-      <workItem from="1643362867398" duration="1688000" />
+      <workItem from="1643362867398" duration="2029000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58598000" />
+    <option name="totallyTimeSpent" value="58939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1342" y="0" width="1234" height="1030" extended-state="0" />
@@ -628,13 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphql/mutations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -649,16 +642,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/SongList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="70" column="54" lean-forward="true" selection-start-line="70" selection-start-column="54" selection-end-line="70" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/graphql/client.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
@@ -669,10 +652,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/graphql/mutations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/SongList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="70" column="71" selection-start-line="70" selection-start-column="71" selection-end-line="70" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/QueuedSongList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+        <state relative-caret-position="315">
+          <caret line="60" column="43" lean-forward="true" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
