@@ -85,6 +85,20 @@ function SongPlayer() {
         return new Date(seconds * 1000).toISOString().substr(11, 8)
     }
 
+    function handlePlayNextSong() {
+        const nextSong = data.queue[positionInQueue + 1]
+        if (nextSong) {
+            dispatch({type: 'SET_SONG', payload: {song: nextSong}})
+        }
+    }
+
+    function handlePlayPrevSong() {
+        const prevSong = data.queue[positionInQueue - 1]
+        if (prevSong) {
+            dispatch({type: 'SET_SONG', payload: {song: prevSong}})
+        }
+    }
+
     return (
         <>
             <Card variant='outlined' className={classes.container}>
@@ -98,14 +112,14 @@ function SongPlayer() {
                         </Typography>
                     </CardContent>
                     <div className={classes.controls}>
-                        <IconButton>
+                        <IconButton onClick={handlePlayPrevSong}>
                             <SkipPreviousIcon/>
                         </IconButton>
                         <IconButton onClick={handleTogglePlay}>
                             {state.isPlaying ? <PauseIcon className={classes.playIcon}/> :
                                 <PlayArrowIcon className={classes.playIcon}/>}
                         </IconButton>
-                        <IconButton>
+                        <IconButton onClick={handlePlayNextSong}>
                             <SkipNextIcon/>
                         </IconButton>
                         <Typography variant='subtitle1' component='p' color='textSecondary'>
